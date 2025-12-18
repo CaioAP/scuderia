@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+@import 'primeicons/primeicons.css';
+
+* {
+	font-family: Inter, sans-serif;
+}
+
+.nuxt-icon svg {
+	margin-bottom: 0 !important;
+}
+
+.logo-text {
+	font-family: 'Zalando Sans Expanded', sans-serif;
+}
