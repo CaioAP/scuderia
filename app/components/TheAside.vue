@@ -4,6 +4,7 @@
 		:class="expanded ? 'w-60 items-start' : ''"
 	>
 		<Button
+			v-tooltip="expanded ? 'Retrair' : 'Expandir'"
 			class="size-10 min-w-10 min-h-10 p-2 rounded flex justify-center items-center text-gray-900 hover:cursor-pointer hover:bg-gray-100"
 			variant="text"
 			unstyled
@@ -17,6 +18,7 @@
 		</Button>
 		<div
 			v-for="nav in navItems"
+			v-tooltip="!expanded ? nav.name : ''"
 			class="size-10 min-w-10 min-h-10 p-2 rounded flex justify-center items-center text-gray-500 hover:cursor-pointer hover:bg-gray-100 hover:text-gray-900"
 			:class="expanded ? 'min-w-full justify-start gap-2' : ''"
 		>
