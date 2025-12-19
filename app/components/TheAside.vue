@@ -5,7 +5,7 @@
 	>
 		<Button
 			v-tooltip="expanded ? 'Retrair' : 'Expandir'"
-			class="size-10 min-w-10 min-h-10 p-2 rounded flex justify-center items-center text-gray-900 hover:cursor-pointer hover:bg-gray-100"
+			class="size-10 min-w-10 min-h-10 p-2 rounded flex justify-center items-center text-gray-900 hover:cursor-pointer hover:bg-gray-100 hover:text-primary"
 			variant="text"
 			unstyled
 			@click="toggleExpansion"
@@ -16,18 +16,21 @@
 				:class="expanded ? '-rotate-180' : ''"
 			/>
 		</Button>
-		<div
+
+		<RouterLink
 			v-for="nav in navItems"
+			:key="nav.name"
 			v-tooltip="!expanded ? nav.name : ''"
-			class="size-10 min-w-10 min-h-10 p-2 rounded flex justify-center items-center text-gray-500 hover:cursor-pointer hover:bg-gray-100 hover:text-gray-900"
+			class="size-10 min-w-10 min-h-10 p-2 rounded flex justify-center items-center text-gray-500 hover:cursor-pointer hover:bg-gray-100 hover:text-primary"
 			:class="expanded ? 'min-w-full justify-start gap-2' : ''"
+			:to="{ name: nav.to }"
 		>
 			<NuxtIcon
 				:name="nav.icon"
 				class="text-2xl"
 			/>
 			<span v-show="expanded">{{ nav.name }}</span>
-		</div>
+		</RouterLink>
 	</section>
 </template>
 
@@ -35,16 +38,17 @@
 const expanded: Ref<boolean> = ref(false);
 
 const navItems: NavItem[] = reactive([
-	{ icon: 'home', name: 'Inicio', to: '' },
-	{ icon: 'corporate_fare', name: 'Empresa', to: '' },
-	{ icon: 'account_tree', name: 'Organograma', to: '' },
-	{ icon: 'groups', name: 'Colaboradores', to: '' },
-	{ icon: 'cake', name: 'Aniversarios', to: '' },
+	{ icon: 'home', name: 'Início', to: '' },
+	{ icon: 'cake', name: 'Aniversários', to: '' },
+	{ icon: 'content_paste_search', name: 'Pesquisas', to: '' },
 	{ icon: 'campaign', name: 'Comunicados', to: '' },
 	{ icon: 'feedback', name: 'Feedbacks', to: '' },
 	{ icon: 'chart_data', name: 'Desenvolvimento', to: '' },
-	{ icon: 'meeting_room', name: 'Reunioes', to: '' },
-	{ icon: 'grading', name: 'Avaliacoes', to: '' },
+	{ icon: 'meeting_room', name: 'Reuniões', to: '' },
+	{ icon: 'grading', name: 'Avaliações', to: '' },
+	{ icon: 'corporate_fare', name: 'Empresa', to: '' },
+	{ icon: 'account_tree', name: 'Organograma', to: '' },
+	{ icon: 'groups', name: 'Colaboradores', to: '' },
 	{ icon: 'hearing', name: 'Ouvidoria', to: '' },
 ]);
 
