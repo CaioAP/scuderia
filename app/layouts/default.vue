@@ -6,8 +6,10 @@
 	>
 		<TheAside />
 
-		<div class="p-4">
-			<slot />
+		<div class="w-full p-4 flex">
+			<div class="max-w-6xl w-full mx-auto">
+				<slot />
+			</div>
 		</div>
 	</main>
 

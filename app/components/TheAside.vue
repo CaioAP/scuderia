@@ -5,7 +5,7 @@
 	>
 		<Button
 			v-tooltip="expanded ? 'Retrair' : 'Expandir'"
-			class="size-10 min-w-10 min-h-10 p-2 rounded flex justify-center items-center text-gray-900 hover:cursor-pointer hover:bg-gray-100 hover:text-primary"
+			class="size-10 min-w-10 min-h-10 mb-4 p-2 rounded flex justify-center items-center text-gray-900 hover:cursor-pointer hover:bg-gray-100 hover:text-primary"
 			variant="text"
 			unstyled
 			@click="toggleExpansion"
