@@ -2,6 +2,11 @@
 @import 'tailwindcss-primeui';
 @import 'primeicons/primeicons.css';
 
+:root {
+	--body-width: calc(100svw - 4rem);
+	--body-height: calc(100svh - 8rem);
+}
+
 * {
 	font-family: Inter, sans-serif;
 }
