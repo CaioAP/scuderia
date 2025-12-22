@@ -9,6 +9,12 @@
 			/>
 			<span class="logo-text text-lg text-primary">Scuderia</span>
 		</div>
+
+		<div class="ml-auto flex items-center gap-4"></div>
+
+		<div class="ml-auto flex items-center gap-4">
+			<HeaderUserMenu />
+		</div>
 	</header>
 </template>
 
