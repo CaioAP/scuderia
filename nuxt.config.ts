@@ -12,6 +12,16 @@ export default defineNuxtConfig({
 		plugins: [tailwindcss()],
 	},
 
+	imports: {
+		dirs: ['~/services'],
+	},
+
+	runtimeConfig: {
+		public: {
+			apiBase: '',
+		},
+	},
+
 	primevue: {
 		usePrimeVue: true,
 		importTheme: { from: '@/themes/cilia.ts' },
