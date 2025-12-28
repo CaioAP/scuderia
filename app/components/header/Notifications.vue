@@ -26,7 +26,15 @@ const { data: notificationsData } = await useAsyncData<Notification[]>(
 	'notifications',
 	async () => {
 		if (!services) return new Promise((res) => res([]));
-		const data = await services.notification.getMostRecent();
+
+		const { data, error } = await tryCatch(
+			services.notification.getMostRecent(),
+		);
+
+		if (error) {
+			return [];
+		}
+
 		return data.map((d) => {
 			d.loading = false;
 			return d;

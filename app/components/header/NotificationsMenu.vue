@@ -95,7 +95,15 @@ const markAsRead = async (item: MenuItem, event: PointerEvent) => {
 	if (!services || markNotificationsLoading.value) return;
 
 	emits('on:item-loading', item.id, true);
-	await services.notification.markRead(item.id);
+	const { error } = await tryCatch(services.notification.markRead(item.id));
+
+	if (error) {
+		// TODO: show the Alert component with the error message
+		console.error(error.message);
+		emits('on:item-loading', item.id, false);
+		return;
+	}
+
 	emits('on:item-read', item.id);
 };
 
@@ -103,8 +111,14 @@ const markNotificationsAsRead = async () => {
 	if (!services) return;
 
 	markNotificationsLoading.value = true;
-	await services.notification.markAllRead();
+	const { error } = await tryCatch(services.notification.markAllRead());
 	markNotificationsLoading.value = false;
+
+	if (error) {
+		// TODO: show the Alert component with the error message
+		console.error(error.message);
+		return;
+	}
 
 	emits('on:all-read');
 };
