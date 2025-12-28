@@ -6,6 +6,12 @@
 	--body-width: calc(100% - 4rem);
 	--body-height: calc(100svh - 8rem);
 	--aside-height: calc(100svh - 4rem);
+
+	--p-primary: var(--color-indigo-500);
+	--p-progressspinner-color-one: var(--p-primary);
+	--p-progressspinner-color-two: var(--p-primary);
+	--p-progressspinner-color-three: var(--p-primary);
+	--p-progressspinner-color-four: var(--p-primary);
 }
 
 * {
@@ -22,4 +28,8 @@ html {
 
 .logo-text {
 	font-family: 'Zalando Sans Expanded', sans-serif;
+}
+
+.p-overlaybadge .p-badge {
+	transform: translate(25%, -25%);
 }
