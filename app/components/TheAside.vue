@@ -17,7 +17,7 @@
 			/>
 		</Button>
 
-		<RouterLink
+		<NuxtLink
 			v-for="nav in navItems"
 			:key="nav.name"
 			v-tooltip="!expanded ? nav.name : ''"
@@ -30,7 +30,7 @@
 				class="text-2xl"
 			/>
 			<span v-show="expanded">{{ nav.name }}</span>
-		</RouterLink>
+		</NuxtLink>
 	</section>
 </template>
 
