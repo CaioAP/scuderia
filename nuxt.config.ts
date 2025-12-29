@@ -6,7 +6,12 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	css: ['./app/assets/css/main.css'],
 
-	modules: ['@primevue/nuxt-module', '@nuxt/fonts', 'nuxt-icons'],
+	modules: [
+		'@primevue/nuxt-module',
+		'@nuxt/fonts',
+		'@nuxt/image',
+		'nuxt-icons',
+	],
 
 	vite: {
 		plugins: [tailwindcss()],
