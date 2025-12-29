@@ -15,22 +15,26 @@
 		<div class="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 			<HomeInsightBirthdays
 				class="shadow-md shadow-primary-200"
-				:birthdays-today="birthdaysToday"
-				:birthdays-month="birthdaysMonth"
+				:birthdays-today="birthdays.today"
+				:birthdays-month="birthdays.month"
+			/>
+			<HomeInsightFeedbacks
+				class="shadow-md shadow-primary-200"
+				:feedbacks-sent="feedbacks.sent"
+				:feedbacks-received="feedbacks.received"
+				:latest-feedback-user="feedbacks.latestUser"
 			/>
 			<HomeInsightSurveys
 				class="shadow-md shadow-primary-200"
-				:surveys-month="surveysMonth"
-				:surveys-total="surveysTotal"
+				:surveys-month="surveys.month"
+				:surveys-total="surveys.total"
+				:surveys-answered="surveys.answered"
 			/>
-			<div class="w-full h-full rounded-lg border border-gray-200 bg-white">
-				<h2 class="w-full text-center leading-40">Comunicados do mês</h2>
-			</div>
-			<div
-				class="w-full h-full rounded-lg border border-gray-200 bg-white md:gri"
-			>
-				<h2 class="w-full text-center leading-40">Feedbacks</h2>
-			</div>
+			<HomeInsightAnnouncements
+				class="shadow-md shadow-primary-200"
+				:announcements-month="announcements.month"
+				:announcements-total="announcements.total"
+			/>
 		</div>
 
 		<div class="w-full grid grid-cols-1 items-center gap-4 lg:grid-cols-5">
@@ -57,92 +61,72 @@
 
 <script setup lang="ts">
 const reminder = ref();
-const birthdaysToday = ref([
-	{
+
+const birthdays = ref({
+	today: [
+		{
+			id: 1,
+			name: 'Caio Alfonso',
+			label: 'CA',
+			avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+		},
+	],
+	month: [
+		{
+			id: 1,
+			name: 'Caio Alfonso',
+			label: 'CA',
+			avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+		},
+		{
+			id: 2,
+			name: 'Caio Alfonso',
+			label: 'CA',
+			avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+		},
+		{
+			id: 3,
+			name: 'Caio Alfonso',
+			label: 'CA',
+			avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+		},
+		{
+			id: 4,
+			name: 'Caio Alfonso',
+			label: 'CA',
+			avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+		},
+		{
+			id: 5,
+			name: 'Caio Alfonso',
+			label: 'CA',
+			avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+		},
+	],
+});
+
+const surveys = ref({
+	month: 3,
+	total: 14,
+	answered: 10,
+});
+
+const announcements = ref({
+	month: 3,
+	total: 10,
+});
+
+const feedbacks = ref({
+	sent: 5,
+	received: 20,
+	latestUser: {
 		id: 1,
-		name: 'Caio Alfonso',
-		label: 'CA',
-		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+		name: 'Fulana da Silva',
+		avatar:
+			'https://primefaces.org/cdn/primevue/images/avatar/asiyajavayant.png',
+		label: 'FS',
 	},
-]);
-const birthdaysMonth = ref([
-	{
-		id: 1,
-		name: 'Caio Alfonso',
-		label: 'CA',
-		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
-	},
-	{
-		id: 2,
-		name: 'Caio Alfonso',
-		label: 'CA',
-		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
-	},
-	{
-		id: 3,
-		name: 'Caio Alfonso',
-		label: 'CA',
-		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
-	},
-	{
-		id: 4,
-		name: 'Caio Alfonso',
-		label: 'CA',
-		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
-	},
-	{
-		id: 5,
-		name: 'Caio Alfonso',
-		label: 'CA',
-		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
-	},
-]);
-const surveysMonth = ref([
-	{
-		id: 1,
-		title: 'Pesquisa de satisfação',
-		description:
-			'Pesquisa de satisfação da festinha de final do mês de dezembro',
-		answered: false,
-	},
-	{
-		id: 2,
-		title: 'Pesquisa de satisfação',
-		description:
-			'Pesquisa de satisfação da festinha de final do mês de dezembro',
-		answered: true,
-	},
-]);
-const surveysTotal = ref([
-	{
-		id: 1,
-		title: 'Pesquisa de satisfação',
-		description:
-			'Pesquisa de satisfação da festinha de final do mês de dezembro',
-		answered: false,
-	},
-	{
-		id: 2,
-		title: 'Pesquisa de satisfação',
-		description:
-			'Pesquisa de satisfação da festinha de final do mês de dezembro',
-		answered: true,
-	},
-	{
-		id: 3,
-		title: 'Pesquisa de satisfação',
-		description:
-			'Pesquisa de satisfação da festinha de final do mês de dezembro',
-		answered: true,
-	},
-	{
-		id: 4,
-		title: 'Pesquisa de satisfação',
-		description:
-			'Pesquisa de satisfação da festinha de final do mês de dezembro',
-		answered: true,
-	},
-]);
+});
 </script>
 
 <style scoped lang="scss"></style>
