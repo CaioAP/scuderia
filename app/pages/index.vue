@@ -13,9 +13,11 @@
 		</div>
 
 		<div class="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-			<div class="w-full h-full rounded-lg border border-gray-200 bg-white">
-				<h2 class="w-full text-center leading-40">Aniversários hoje</h2>
-			</div>
+			<HomeInsightBirthdays
+				class="shadow-md shadow-primary-200"
+				:birthdays-today="birthdaysToday"
+				:birthdays-month="birthdaysMonth"
+			/>
 			<div class="w-full h-full rounded-lg border border-gray-200 bg-white">
 				<h2 class="w-full text-center leading-40">Pesquisas do mês</h2>
 			</div>
@@ -53,6 +55,46 @@
 
 <script setup lang="ts">
 const reminder = ref();
+const birthdaysToday = ref([
+	{
+		id: 1,
+		name: 'Caio Alfonso',
+		label: 'CA',
+		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+	},
+]);
+const birthdaysMonth = ref([
+	{
+		id: 1,
+		name: 'Caio Alfonso',
+		label: 'CA',
+		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+	},
+	{
+		id: 2,
+		name: 'Caio Alfonso',
+		label: 'CA',
+		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+	},
+	{
+		id: 3,
+		name: 'Caio Alfonso',
+		label: 'CA',
+		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+	},
+	{
+		id: 4,
+		name: 'Caio Alfonso',
+		label: 'CA',
+		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+	},
+	{
+		id: 5,
+		name: 'Caio Alfonso',
+		label: 'CA',
+		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+	},
+]);
 </script>
 
 <style scoped lang="scss"></style>
