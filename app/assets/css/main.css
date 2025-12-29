@@ -2,6 +2,11 @@
 @import 'tailwindcss-primeui';
 @import 'primeicons/primeicons.css';
 
+@theme {
+	--shadow-right-md: 4px 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+		2px 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+}
+
 :root {
 	--body-width: calc(100% - 4rem);
 	--body-height: calc(100svh - 8rem);

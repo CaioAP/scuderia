@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="fixed inset-0 top-16 w-16 h-(--aside-height) p-2.5 flex flex-col gap-1 bg-white overflow-x-hidden overflow-y-auto transition-[width] ease-in-out duration-200"
+		class="fixed inset-0 top-16 w-16 h-(--aside-height) p-2.5 flex flex-col gap-1 bg-white shadow-right-md shadow-primary-100 overflow-x-hidden overflow-y-auto transition-[width] ease-in-out duration-200"
 		:class="expanded ? 'w-60 items-start' : ''"
 	>
 		<Button
