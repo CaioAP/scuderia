@@ -36,6 +36,21 @@ html {
 	font-family: 'Zalando Sans Expanded', sans-serif;
 }
 
+/* Override PrimeVue's components css */
+
 .p-overlaybadge .p-badge {
 	transform: translate(25%, -25%);
+}
+
+/* Override Quill's editor css */
+
+.ql-tooltip,
+.ql-tooltip.ql-editing {
+	left: 0 !important;
+	margin-top: 0px !important;
+	z-index: 20;
+}
+
+.ql-editor ol li:before {
+	content: '' !important;
 }
