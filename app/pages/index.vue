@@ -42,11 +42,10 @@
 				class="w-full row-start-2 flex flex-col rounded-lg bg-white shadow-md shadow-primary-200 lg:col-span-3 lg:row-start-1"
 			/>
 
-			<div
-				class="w-full h-full flex flex-col justify-center items-center rounded-lg border border-gray-200 bg-white lg:col-span-2"
-			>
-				<h2>Dados do usuário</h2>
-			</div>
+			<HomeUserInfo
+				class="w-full h-full rounded-lg bg-white lg:col-span-2"
+				:user="userInfo"
+			/>
 		</div>
 
 		<div
@@ -58,9 +57,16 @@
 </template>
 
 <script setup lang="ts">
+import type {
+	HomeCardBirthdays,
+	HomeCardSurveys,
+	HomeCardAnnouncements,
+	HomeCardFeedbacks,
+} from '#shared/types/HomeCards';
+
 const reminder = ref();
 
-const birthdays = ref({
+const birthdays: Ref<HomeCardBirthdays> = ref({
 	today: [
 		{
 			id: 1,
@@ -103,18 +109,18 @@ const birthdays = ref({
 	],
 });
 
-const surveys = ref({
+const surveys: Ref<HomeCardSurveys> = ref({
 	month: 3,
 	total: 14,
 	answered: 10,
 });
 
-const announcements = ref({
+const announcements: Ref<HomeCardAnnouncements> = ref({
 	month: 3,
 	total: 10,
 });
 
-const feedbacks = ref({
+const feedbacks: Ref<HomeCardFeedbacks> = ref({
 	sent: 5,
 	received: 20,
 	latestUser: {
@@ -124,6 +130,15 @@ const feedbacks = ref({
 			'https://primefaces.org/cdn/primevue/images/avatar/asiyajavayant.png',
 		label: 'FS',
 	},
+});
+
+const userInfo: Ref<User> = ref({
+	id: 1,
+	name: 'Caio Alfonso de Paula',
+	label: 'CA',
+	avatar:
+		'https://dhzrp5s22uvyk.cloudfront.net/companies/8009/profiles/1675321/avatar/f0360690909b00f66e70e56440d07fa5.png',
+	jobPosition: 'Analista de Desenvolvimento de Software',
 });
 </script>
 
