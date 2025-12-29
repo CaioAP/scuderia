@@ -20,8 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import type { AvatarProps } from 'primevue';
-
 interface Props {
 	image?: string;
 	icon?: string;
@@ -29,9 +27,9 @@ interface Props {
 	shape?: 'square' | 'circle';
 }
 
-const props = withDefaults(defineProps<Props & AvatarProps>(), {
+const props = withDefaults(defineProps<Props>(), {
 	shape: 'circle',
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped></style>
