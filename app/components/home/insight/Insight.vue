@@ -3,9 +3,7 @@
 		class="rounded-lg overflow-hidden"
 		:to="{ name: props.to }"
 	>
-		<div
-			class="w-full h-full px-3 py-2 relative flex flex-col gap-6 bg-white hover:bg-primary-50"
-		>
+		<div class="w-full h-full px-3 py-2 relative flex flex-col gap-6 bg-white">
 			<div class="absolute inset-0 opacity-10 z-0">
 				<slot name="background" />
 			</div>
