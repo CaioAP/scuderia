@@ -1,6 +1,6 @@
 <template>
 	<header
-		class="fixed inset-0 w-full h-16 flex items-center px-5 py-2 font-bold bg-white shadow-md shadow-primary-100"
+		class="fixed inset-0 w-full h-16 flex items-center px-5 py-2 font-bold bg-white shadow-md shadow-primary-100 z-50"
 	>
 		<div class="flex items-center gap-1">
 			<NuxtIcon
