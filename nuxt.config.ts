@@ -42,4 +42,15 @@ export default defineNuxtConfig({
 		//   },
 		// },
 	},
+
+	app: {
+		head: {
+			link: [
+				{
+					rel: 'stylesheet',
+					href: 'https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css',
+				},
+			],
+		},
+	},
 });
