@@ -14,38 +14,36 @@
 
 		<div class="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 			<HomeInsightBirthdays
-				class="shadow-md shadow-primary-200"
+				class="shadow-md shadow-primary-200 hover:shadow-lg hover:-translate-y-1"
 				:birthdays-today="birthdays.today"
 				:birthdays-month="birthdays.month"
 			/>
 			<HomeInsightFeedbacks
-				class="shadow-md shadow-primary-200"
+				class="shadow-md shadow-primary-200 hover:shadow-lg hover:-translate-y-1"
 				:feedbacks-sent="feedbacks.sent"
 				:feedbacks-received="feedbacks.received"
 				:latest-feedback-user="feedbacks.latestUser"
 			/>
 			<HomeInsightSurveys
-				class="shadow-md shadow-primary-200"
+				class="shadow-md shadow-primary-200 hover:shadow-lg hover:-translate-y-1"
 				:surveys-month="surveys.month"
 				:surveys-total="surveys.total"
 				:surveys-answered="surveys.answered"
 			/>
 			<HomeInsightAnnouncements
-				class="shadow-md shadow-primary-200"
+				class="shadow-md shadow-primary-200 hover:shadow-lg hover:-translate-y-1"
 				:announcements-month="announcements.month"
 				:announcements-total="announcements.total"
 			/>
 		</div>
 
 		<div class="w-full grid grid-cols-1 items-center gap-4 lg:grid-cols-5">
+			<HomeMessage
+				class="w-full row-start-2 flex flex-col rounded-lg bg-white shadow-md shadow-primary-200 lg:col-span-3 lg:row-start-1"
+			/>
+
 			<div
-				class="w-full h-40 row-start-2 flex flex-col justify-center items-center rounded-lg border border-gray-200 bg-white lg:col-span-3 lg:row-start-1"
-			>
-				<h2 class="text-center">O que está pensando hoje?</h2>
-				<InputText placeholder="Escreva uma mensagem" />
-			</div>
-			<div
-				class="w-full h-40 flex flex-col justify-center items-center rounded-lg border border-gray-200 bg-white lg:col-span-2"
+				class="w-full h-full flex flex-col justify-center items-center rounded-lg border border-gray-200 bg-white lg:col-span-2"
 			>
 				<h2>Dados do usuário</h2>
 			</div>
