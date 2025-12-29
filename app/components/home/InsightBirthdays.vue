@@ -10,7 +10,7 @@
 			/>
 		</template>
 
-		<div class="w-full my-auto flex justify-between items-center gap-2 z-10">
+		<div class="w-full flex justify-between items-center gap-2 z-10">
 			<div>
 				<div>
 					<span class="font-semibold text-4xl text-primary">
@@ -53,6 +53,7 @@
 						v-for="user in birthdaysMonthAvatars"
 						:key="user.id"
 						:image="user.avatar"
+						:label="user.label"
 						class="size-9"
 					/>
 					<BaseAvatar
