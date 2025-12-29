@@ -2,7 +2,7 @@
 	<TheHeader />
 
 	<main
-		class="w-(--body-width) min-h-(--body-height) mt-16 ml-16 bg-primary-50"
+		class="w-(--body-width) min-h-(--body-height) max-h-(--body-height) mt-16 ml-16 bg-primary-50 overflow-y-auto"
 	>
 		<TheAside />
 
@@ -11,9 +11,9 @@
 				<slot />
 			</div>
 		</div>
-	</main>
 
-	<TheFooter />
+		<TheFooter />
+	</main>
 </template>
 
 <script lang="ts" setup>

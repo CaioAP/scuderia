@@ -9,7 +9,7 @@
 
 :root {
 	--body-width: calc(100% - 4rem);
-	--body-height: calc(100svh - 8rem);
+	--body-height: calc(100svh - 4rem);
 	--aside-height: calc(100svh - 4rem);
 
 	--p-primary: var(--color-indigo-500);
@@ -25,6 +25,7 @@
 
 html {
 	scrollbar-width: thin;
+	overflow: hidden;
 }
 
 .nuxt-icon svg {
