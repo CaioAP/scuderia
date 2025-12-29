@@ -43,7 +43,7 @@
 			/>
 
 			<HomeUserInfo
-				class="w-full h-full rounded-lg bg-white lg:col-span-2"
+				class="w-full h-full rounded-lg bg-white lg:col-span-2 shadow-md shadow-primary-200"
 				:user="userInfo"
 			/>
 		</div>
