@@ -1,10 +1,14 @@
 <template>
 	<div class="w-full flex flex-col gap-4">
-		<div class="w-full h-40 rounded-lg border border-gray-200 bg-white">
-			<h1 class="w-full text-center leading-40">BANNER</h1>
-		</div>
+		<NuxtImg
+			src="/images/home_banner.png"
+			class="w-full rounded-lg border border-gray-200 shadow-md shadow-primary-200"
+		/>
 
-		<div class="w-full h-40 rounded-lg border border-gray-200 bg-white">
+		<div
+			v-if="reminder"
+			class="w-full h-40 rounded-lg border border-gray-200 bg-white"
+		>
 			<h1 class="w-full text-center leading-40">LEMBRETE</h1>
 		</div>
 
@@ -47,6 +51,8 @@
 	</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const reminder = ref();
+</script>
 
 <style scoped lang="scss"></style>

@@ -7,7 +7,7 @@
 		<TheAside />
 
 		<div class="w-full p-4 flex">
-			<div class="max-w-6xl w-full mx-auto">
+			<div class="max-w-7xl w-full mx-auto">
 				<slot />
 			</div>
 		</div>
