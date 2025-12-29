@@ -10,8 +10,8 @@
 			/>
 		</template>
 
-		<div class="w-full my-auto flex items-center gap-2 z-10">
-			<div class="w-full">
+		<div class="w-full my-auto flex justify-between items-center gap-2 z-10">
+			<div>
 				<div>
 					<span class="font-semibold text-4xl text-primary">
 						{{ props.birthdaysToday.length }}
@@ -37,7 +37,7 @@
 				</AvatarGroup>
 			</div>
 
-			<div class="w-full">
+			<div>
 				<div>
 					<span class="font-semibold text-4xl text-primary">
 						{{ props.birthdaysMonth.length }}

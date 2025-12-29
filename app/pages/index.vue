@@ -18,9 +18,11 @@
 				:birthdays-today="birthdaysToday"
 				:birthdays-month="birthdaysMonth"
 			/>
-			<div class="w-full h-full rounded-lg border border-gray-200 bg-white">
-				<h2 class="w-full text-center leading-40">Pesquisas do mês</h2>
-			</div>
+			<HomeInsightSurveys
+				class="shadow-md shadow-primary-200"
+				:surveys-month="surveysMonth"
+				:surveys-total="surveysTotal"
+			/>
 			<div class="w-full h-full rounded-lg border border-gray-200 bg-white">
 				<h2 class="w-full text-center leading-40">Comunicados do mês</h2>
 			</div>
@@ -93,6 +95,52 @@ const birthdaysMonth = ref([
 		name: 'Caio Alfonso',
 		label: 'CA',
 		avatar: 'https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png',
+	},
+]);
+const surveysMonth = ref([
+	{
+		id: 1,
+		title: 'Pesquisa de satisfação',
+		description:
+			'Pesquisa de satisfação da festinha de final do mês de dezembro',
+		answered: false,
+	},
+	{
+		id: 2,
+		title: 'Pesquisa de satisfação',
+		description:
+			'Pesquisa de satisfação da festinha de final do mês de dezembro',
+		answered: true,
+	},
+]);
+const surveysTotal = ref([
+	{
+		id: 1,
+		title: 'Pesquisa de satisfação',
+		description:
+			'Pesquisa de satisfação da festinha de final do mês de dezembro',
+		answered: false,
+	},
+	{
+		id: 2,
+		title: 'Pesquisa de satisfação',
+		description:
+			'Pesquisa de satisfação da festinha de final do mês de dezembro',
+		answered: true,
+	},
+	{
+		id: 3,
+		title: 'Pesquisa de satisfação',
+		description:
+			'Pesquisa de satisfação da festinha de final do mês de dezembro',
+		answered: true,
+	},
+	{
+		id: 4,
+		title: 'Pesquisa de satisfação',
+		description:
+			'Pesquisa de satisfação da festinha de final do mês de dezembro',
+		answered: true,
 	},
 ]);
 </script>
