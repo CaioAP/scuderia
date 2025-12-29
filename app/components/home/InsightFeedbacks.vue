@@ -6,7 +6,7 @@
 		<template #background>
 			<NuxtImg
 				src="/images/review.png"
-				class="w-full h-full object-cover"
+				class="w-full h-full object-cover opacity-75"
 			/>
 		</template>
 
@@ -27,7 +27,10 @@
 				</div>
 			</div>
 
-			<div class="flex items-center gap-2">
+			<div
+				v-if="props.latestFeedbackUser"
+				class="flex items-center gap-2"
+			>
 				<BaseAvatar
 					:image="props.latestFeedbackUser.avatar"
 					:label="props.latestFeedbackUser.label"
@@ -47,7 +50,7 @@
 interface Props {
 	feedbacksSent: number;
 	feedbacksReceived: number;
-	latestFeedbackUser: User;
+	latestFeedbackUser?: User;
 }
 
 const props = defineProps<Props>();
