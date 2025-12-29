@@ -65,6 +65,7 @@
 <script setup lang="ts">
 import type { Menu } from 'primevue';
 import type { MenuItem } from 'primevue/menuitem';
+import { useToast } from 'primevue/usetoast';
 
 interface Props {
 	unread: Set<Number>;
@@ -82,6 +83,8 @@ const emits = defineEmits<Emits>();
 
 const services = inject<Services>('services');
 
+const toast = useToast();
+
 const markNotificationsLoading: Ref<boolean> = ref(false);
 const notificationsMenu: Ref<InstanceType<typeof Menu> | undefined> = ref();
 
@@ -98,8 +101,12 @@ const markAsRead = async (item: MenuItem, event: PointerEvent) => {
 	const { error } = await tryCatch(services.notification.markRead(item.id));
 
 	if (error) {
-		// TODO: show the Alert component with the error message
-		console.error(error.message);
+		toast.add({
+			severity: 'error',
+			summary: 'Erro',
+			detail: 'Não foi possível marcar a notificação como lida.',
+			life: 3000,
+		});
 		emits('on:item-loading', item.id, false);
 		return;
 	}
@@ -115,8 +122,12 @@ const markNotificationsAsRead = async () => {
 	markNotificationsLoading.value = false;
 
 	if (error) {
-		// TODO: show the Alert component with the error message
-		console.error(error.message);
+		toast.add({
+			severity: 'error',
+			summary: 'Erro',
+			detail: 'Não foi possível marcar todas as notificações como lidas.',
+			life: 3000,
+		});
 		return;
 	}
 
