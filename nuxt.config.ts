@@ -15,10 +15,6 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    test: {
-      environment: 'happy-dom',
-      globals: true,
-    },
   },
 
   imports: {
