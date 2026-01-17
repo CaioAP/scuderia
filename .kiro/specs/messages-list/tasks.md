@@ -27,8 +27,8 @@ This implementation plan converts the messages list design into discrete coding 
     - **Property 9: Like Operation Persistence**
     - **Validates: Requirements 4.5**
 
-- [ ] 3. Update dependency injection system
-  - [ ] 3.1 Update services plugin to include MessageService
+- [x] 3. Update dependency injection system
+  - [x] 3.1 Update services plugin to include MessageService
     - Modify app/plugins/services.ts to provide MessageServiceMock
     - Update Services type to include message service
     - _Requirements: 4.1, 8.3_
