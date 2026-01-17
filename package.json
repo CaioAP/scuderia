@@ -7,7 +7,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.12.1",
@@ -29,6 +32,10 @@
     "zod": "^4.2.1"
   },
   "devDependencies": {
-    "@primevue/nuxt-module": "^4.5.3"
+    "@primevue/nuxt-module": "^4.5.3",
+    "@types/node": "^25.0.9",
+    "@vitest/ui": "^4.0.17",
+    "fast-check": "^4.5.3",
+    "vitest": "^4.0.17"
   }
 }

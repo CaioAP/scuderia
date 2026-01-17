@@ -2,55 +2,59 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	compatibilityDate: '2025-07-15',
-	devtools: { enabled: true },
-	css: ['./app/assets/css/main.css'],
+  compatibilityDate: '2025-07-15',
+  devtools: { enabled: true },
+  css: ['./app/assets/css/main.css'],
 
-	modules: [
-		'@primevue/nuxt-module',
-		'@nuxt/fonts',
-		'@nuxt/image',
-		'nuxt-icons',
-	],
+  modules: [
+    '@primevue/nuxt-module',
+    '@nuxt/fonts',
+    '@nuxt/image',
+    'nuxt-icons',
+  ],
 
-	vite: {
-		plugins: [tailwindcss()],
-	},
+  vite: {
+    plugins: [tailwindcss()],
+    test: {
+      environment: 'happy-dom',
+      globals: true,
+    },
+  },
 
-	imports: {
-		dirs: ['~/services'],
-	},
+  imports: {
+    dirs: ['~/services'],
+  },
 
-	runtimeConfig: {
-		public: {
-			apiBase: '',
-		},
-	},
+  runtimeConfig: {
+    public: {
+      apiBase: '',
+    },
+  },
 
-	primevue: {
-		usePrimeVue: true,
-		importTheme: { from: '@/themes/cilia.ts' },
-		// options: {
-		//   theme: {
-		//     preset: Aura,
-		//     options: {
-		//       cssLayer: {
-		//         name: "primevue",
-		//         order: "theme, base, primevue",
-		//       },
-		//     },
-		//   },
-		// },
-	},
+  primevue: {
+    usePrimeVue: true,
+    importTheme: { from: '@/themes/cilia.ts' },
+    // options: {
+    //   theme: {
+    //     preset: Aura,
+    //     options: {
+    //       cssLayer: {
+    //         name: "primevue",
+    //         order: "theme, base, primevue",
+    //       },
+    //     },
+    //   },
+    // },
+  },
 
-	app: {
-		head: {
-			link: [
-				{
-					rel: 'stylesheet',
-					href: 'https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css',
-				},
-			],
-		},
-	},
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css',
+        },
+      ],
+    },
+  },
 });
