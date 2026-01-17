@@ -33,15 +33,15 @@ This implementation plan converts the messages list design into discrete coding 
     - Update Services type to include message service
     - _Requirements: 4.1, 8.3_
 
-- [ ] 4. Create MessageActions component
-  - [ ] 4.1 Implement MessageActions.vue component
+- [x] 4. Create MessageActions component
+  - [x] 4.1 Implement MessageActions.vue component
     - Create like button with PrimeVue Button component
     - Display like count with proper formatting
     - Handle loading states during like operations
     - Implement optimistic updates for like/unlike
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
 
-  - [ ] 4.2 Write property tests for like functionality
+  - [x] 4.2 Write property tests for like functionality
     - **Property 3: Like State Toggle Behavior**
     - **Property 4: Like Count Accuracy**
     - **Property 5: Like Button State Representation**

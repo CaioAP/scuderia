@@ -34,7 +34,9 @@
   "devDependencies": {
     "@primevue/nuxt-module": "^4.5.3",
     "@types/node": "^25.0.9",
+    "@vitejs/plugin-vue": "^6.0.3",
     "@vitest/ui": "^4.0.17",
+    "@vue/test-utils": "^2.4.6",
     "fast-check": "^4.5.3",
     "happy-dom": "^20.3.1",
     "vitest": "^4.0.17"
