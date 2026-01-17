@@ -16,14 +16,14 @@ This implementation plan converts the messages list design into discrete coding 
   - **Property 8: Service Data Structure Compliance**
   - **Validates: Requirements 4.4**
 
-- [ ] 2. Implement MessageService with mock data
-  - [ ] 2.1 Create MessageService.ts with interface and implementations
+- [x] 2. Implement MessageService with mock data
+  - [x] 2.1 Create MessageService.ts with interface and implementations
     - Implement MessageServiceMock with sample message data
     - Implement MessageServiceHttp and MessageServiceFetch stubs
     - Include mock data with various message types and timestamps
     - _Requirements: 4.1, 4.2, 4.4, 4.5_
 
-  - [ ] 2.2 Write property test for like operation persistence
+  - [x] 2.2 Write property test for like operation persistence
     - **Property 9: Like Operation Persistence**
     - **Validates: Requirements 4.5**
 
