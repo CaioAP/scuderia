@@ -82,8 +82,8 @@ This implementation plan converts the messages list design into discrete coding 
   - Test loading and error states
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 8. Integrate MessagesList with home page
-  - [ ] 8.1 Add MessagesList to index.vue
+- [x] 8. Integrate MessagesList with home page
+  - [x] 8.1 Add MessagesList to index.vue
     - Replace placeholder div with HomeMessagesList component
     - Ensure proper positioning and spacing
     - Maintain responsive layout
