@@ -351,10 +351,14 @@ describe('MessageItem Component', () => {
               expect(timestampText).toMatch(/^\d+ days ago$/);
             } else if (diffInDays < 28) {
               expect(timestampText).toMatch(/^\d+ weeks? ago$/);
-            } else if (diffInDays < 365) {
-              expect(timestampText).toMatch(/^\d+ months? ago$/);
             } else {
-              expect(timestampText).toMatch(/^\d+ years? ago$/);
+              // For days >= 28, check if it should be months or years
+              const diffInMonths = Math.floor(diffInDays / 30);
+              if (diffInMonths < 12) {
+                expect(timestampText).toMatch(/^\d+ months? ago$/);
+              } else {
+                expect(timestampText).toMatch(/^\d+ years? ago$/);
+              }
             }
 
             // Verify consistent format (no mixed languages, proper spacing)

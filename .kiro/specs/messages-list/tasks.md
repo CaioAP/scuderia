@@ -62,21 +62,21 @@ This implementation plan converts the messages list design into discrete coding 
     - **Property 12: Timestamp Formatting Consistency**
     - **Validates: Requirements 1.2, 1.3, 1.4, 1.5, 7.1, 7.2, 7.5**
 
-- [ ] 6. Create MessagesList component
-  - [ ] 6.1 Implement MessagesList.vue main container component
+- [x] 6. Create MessagesList component
+  - [x] 6.1 Implement MessagesList.vue main container component
     - Fetch messages using injected MessageService
     - Display messages in reverse chronological order
     - Handle loading and error states
     - Apply consistent styling with existing home components
     - _Requirements: 1.1, 1.6, 5.1, 5.2_
 
-  - [ ] 6.2 Write property tests for message list behavior
+  - [x] 6.2 Write property tests for message list behavior
     - **Property 1: Message List Chronological Ordering**
     - **Property 6: Loading State Management**
     - **Property 10: Error State Management**
     - **Validates: Requirements 1.1, 3.3, 2.6, 5.1, 5.2, 5.3, 5.4**
 
-- [ ] 7. Checkpoint - Test core functionality
+- [x] 7. Checkpoint - Test core functionality
   - Ensure all components render correctly
   - Verify message display and like functionality
   - Test loading and error states
