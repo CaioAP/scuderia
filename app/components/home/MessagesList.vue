@@ -116,6 +116,7 @@ import { ref, inject, onMounted } from 'vue';
 import type { Message } from '#shared/types/Message';
 import type { Services } from '#shared/types/Services';
 import MessageItem from './message/MessageItem.vue';
+import { sortMessagesByDate } from '~/utils/Message';
 
 // Inject services
 const services = inject<Services>('services');
@@ -135,7 +136,8 @@ const fetchMessages = async () => {
 
   try {
     const fetchedMessages = await services.message.getMessages();
-    messages.value = fetchedMessages;
+    // Ensure messages are sorted in reverse chronological order
+    messages.value = sortMessagesByDate(fetchedMessages);
   } catch (err) {
     error.value =
       err instanceof Error

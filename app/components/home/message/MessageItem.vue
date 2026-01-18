@@ -27,7 +27,7 @@
     <!-- Message Content -->
     <div
       class="prose prose-sm max-w-none mb-4 text-base text-gray-600 leading-relaxed"
-      v-html="sanitizeContent(message.content)"
+      v-html="sanitizeHtmlContent(message.content)"
     />
 
     <!-- Message Actions -->
@@ -47,6 +47,7 @@
 import type { Message } from '#shared/types/Message';
 import BaseAvatar from '~/components/BaseAvatar.vue';
 import MessageActions from './MessageActions.vue';
+import { formatTimestamp, sanitizeHtmlContent } from '~/utils/Message';
 
 interface Props {
   message: Message;
@@ -68,127 +69,6 @@ const handleLikeChanged = (data: {
   likeCount: number;
 }) => {
   emits('like-changed', data);
-};
-
-// Timestamp formatting utility
-const formatTimestamp = (date: Date): string => {
-  // Handle invalid dates
-  if (isNaN(date.getTime())) {
-    return 'Invalid date';
-  }
-
-  const now = new Date();
-  const diffInMilliseconds = now.getTime() - date.getTime();
-  const diffInSeconds = Math.floor(diffInMilliseconds / 1000);
-
-  if (diffInSeconds < 60) {
-    return diffInSeconds <= 1 ? 'just now' : `${diffInSeconds} seconds ago`;
-  }
-
-  const diffInMinutes = Math.floor(diffInSeconds / 60);
-  if (diffInMinutes < 60) {
-    return diffInMinutes === 1
-      ? '1 minute ago'
-      : `${diffInMinutes} minutes ago`;
-  }
-
-  const diffInHours = Math.floor(diffInMinutes / 60);
-  if (diffInHours < 24) {
-    return diffInHours === 1 ? '1 hour ago' : `${diffInHours} hours ago`;
-  }
-
-  const diffInDays = Math.floor(diffInHours / 24);
-  if (diffInDays === 1) {
-    return 'Yesterday';
-  } else if (diffInDays < 7) {
-    return `${diffInDays} days ago`;
-  }
-
-  const diffInWeeks = Math.floor(diffInDays / 7);
-  if (diffInWeeks < 4) {
-    return diffInWeeks === 1 ? '1 week ago' : `${diffInWeeks} weeks ago`;
-  }
-
-  const diffInMonths = Math.floor(diffInDays / 30);
-  if (diffInMonths < 12) {
-    return diffInMonths === 1 ? '1 month ago' : `${diffInMonths} months ago`;
-  }
-
-  const diffInYears = Math.floor(diffInDays / 365);
-  // Ensure we don't return "0 years ago" - if we're here, it should be at least 1 year
-  const years = Math.max(1, diffInYears);
-  return years === 1 ? '1 year ago' : `${years} years ago`;
-};
-
-// HTML sanitization utility
-const sanitizeContent = (content: string): string => {
-  // Create a temporary div to parse HTML
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = content;
-
-  // Define allowed tags and attributes for rich text content
-  const allowedTags = [
-    'p',
-    'br',
-    'strong',
-    'b',
-    'em',
-    'i',
-    'u',
-    's',
-    'strike',
-    'h1',
-    'h2',
-    'h3',
-    'h4',
-    'h5',
-    'h6',
-    'ul',
-    'ol',
-    'li',
-    'blockquote',
-    'a',
-    'span',
-    'div',
-  ];
-
-  const allowedAttributes = ['href', 'target', 'class', 'style'];
-
-  // Remove script tags and other dangerous elements
-  const scripts = tempDiv.querySelectorAll(
-    'script, object, embed, iframe, form, input, button',
-  );
-  scripts.forEach((script) => script.remove());
-
-  // Remove dangerous attributes
-  const allElements = tempDiv.querySelectorAll('*');
-  allElements.forEach((element) => {
-    // Remove elements not in allowed list
-    if (!allowedTags.includes(element.tagName.toLowerCase())) {
-      element.replaceWith(...element.childNodes);
-      return;
-    }
-
-    // Remove dangerous attributes
-    Array.from(element.attributes).forEach((attr) => {
-      if (
-        !allowedAttributes.includes(attr.name.toLowerCase()) &&
-        !attr.name.startsWith('data-')
-      ) {
-        element.removeAttribute(attr.name);
-      }
-    });
-
-    // Sanitize href attributes
-    if (element.tagName.toLowerCase() === 'a') {
-      const href = element.getAttribute('href');
-      if (href && !href.match(/^(https?:\/\/|mailto:|tel:)/)) {
-        element.removeAttribute('href');
-      }
-    }
-  });
-
-  return tempDiv.innerHTML;
 };
 </script>
 

@@ -100,14 +100,14 @@ This implementation plan converts the messages list design into discrete coding 
     - **Property 7: Message List Refresh Integration**
     - **Validates: Requirements 3.2**
 
-- [ ] 10. Add utility functions and composables
-  - [ ] 10.1 Create message-related utility functions
+- [x] 10. Add utility functions and composables
+  - [x] 10.1 Create message-related utility functions
     - Implement timestamp formatting utility
     - Create HTML sanitization utility for rich text content
     - Add message sorting and filtering utilities
     - _Requirements: 7.2, 7.5_
 
-- [ ] 10.2 Write unit tests for utility functions
+- [x] 10.2 Write unit tests for utility functions
   - Test timestamp formatting edge cases
   - Test HTML sanitization with various inputs
   - Test sorting and filtering functions
