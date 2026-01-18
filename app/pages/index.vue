@@ -40,6 +40,7 @@
     <div class="w-full grid grid-cols-1 items-center gap-4 lg:grid-cols-5">
       <HomeMessage
         class="w-full row-start-2 flex flex-col rounded-lg bg-white shadow-md shadow-primary-200 lg:col-span-3 lg:row-start-1"
+        @message-created="handleMessageCreated"
       />
 
       <HomeUserInfo
@@ -48,7 +49,10 @@
       />
     </div>
 
-    <HomeMessagesList class="w-full" />
+    <HomeMessagesList
+      ref="messagesListRef"
+      class="w-full"
+    />
   </div>
 </template>
 
@@ -60,6 +64,17 @@ import type {
   HomeCardFeedbacks,
 } from '#shared/types/HomeCards';
 import type { User } from '#shared/types/User';
+
+// Template ref for MessagesList component
+const messagesListRef = ref();
+
+// Handle message creation event
+const handleMessageCreated = async (message: any) => {
+  // Refresh the messages list to show the new message
+  if (messagesListRef.value && messagesListRef.value.refreshMessages) {
+    await messagesListRef.value.refreshMessages();
+  }
+};
 
 const reminder = ref();
 

@@ -347,6 +347,125 @@ describe('MessagesList Component', () => {
         { numRuns: 30 },
       );
     }, 30000);
+
+    it('Property 7: Message List Refresh Integration - **Validates: Requirements 3.2**', async () => {
+      await fc.assert(
+        fc.asyncProperty(
+          fc.record({
+            initialMessages: fc.array(
+              fc.record({
+                id: fc.integer({ min: 1, max: 1000 }),
+                content: fc.string({ minLength: 1, maxLength: 100 }),
+                author: fc.record({
+                  id: fc.integer({ min: 1, max: 100 }),
+                  name: fc.string({ minLength: 1, maxLength: 50 }),
+                  label: fc.string({ minLength: 1, maxLength: 10 }),
+                }),
+                createdAt: fc.date({
+                  min: new Date('2020-01-01'),
+                  max: new Date(Date.now() - 60000), // At least 1 minute ago
+                }),
+                likeCount: fc.integer({ min: 0, max: 1000 }),
+                isLiked: fc.boolean(),
+              }),
+              { maxLength: 5 },
+            ),
+            newMessage: fc.record({
+              id: fc.integer({ min: 1001, max: 2000 }), // Ensure unique ID
+              content: fc.string({ minLength: 1, maxLength: 100 }),
+              author: fc.record({
+                id: fc.integer({ min: 1, max: 100 }),
+                name: fc.string({ minLength: 1, maxLength: 50 }),
+                label: fc.string({ minLength: 1, maxLength: 10 }),
+              }),
+              createdAt: fc.constant(new Date()), // New message is always newest
+              likeCount: fc.constant(0), // New messages start with 0 likes
+              isLiked: fc.constant(false),
+            }),
+          }),
+          async ({ initialMessages, newMessage }) => {
+            // Ensure unique IDs for initial messages
+            const uniqueInitialMessages = initialMessages.map((msg, index) => ({
+              ...msg,
+              id: index + 1,
+            }));
+
+            // Set up initial messages
+            mockMessageService.setMessages(uniqueInitialMessages);
+
+            const wrapper = mount(MessagesList, {
+              global: {
+                provide: {
+                  services: mockServices,
+                },
+                stubs: {
+                  MessageItem: {
+                    template: `
+                      <div class="test-message-item" 
+                           :data-message-id="message.id"
+                           :data-created-at="message.createdAt.getTime()">
+                        Message {{ message.id }}
+                      </div>
+                    `,
+                    props: ['message'],
+                    emits: ['like-changed'],
+                  },
+                },
+              },
+            });
+
+            // Wait for initial load
+            await new Promise((resolve) => setTimeout(resolve, 50));
+            await wrapper.vm.$nextTick();
+
+            // Get initial message count
+            const initialMessageItems = wrapper.findAll('.test-message-item');
+            const initialCount = initialMessageItems.length;
+
+            // Simulate message creation by adding new message to service
+            const updatedMessages = [...uniqueInitialMessages, newMessage];
+            mockMessageService.setMessages(updatedMessages);
+
+            // Call refreshMessages method (simulating form submission trigger)
+            await wrapper.vm.refreshMessages();
+            await wrapper.vm.$nextTick();
+
+            // Wait for refresh to complete
+            await new Promise((resolve) => setTimeout(resolve, 50));
+            await wrapper.vm.$nextTick();
+
+            // Verify new message appears in the list
+            const updatedMessageItems = wrapper.findAll('.test-message-item');
+            expect(updatedMessageItems.length).toBe(initialCount + 1);
+
+            // Verify the new message is at the top (newest first)
+            if (updatedMessageItems.length > 0) {
+              const firstMessageId =
+                updatedMessageItems[0]!.attributes('data-message-id');
+              expect(firstMessageId).toBe(newMessage.id.toString());
+            }
+
+            // Verify chronological ordering is maintained
+            if (updatedMessageItems.length > 1) {
+              for (let i = 0; i < updatedMessageItems.length - 1; i++) {
+                const currentTimestamp = parseInt(
+                  updatedMessageItems[i]!.attributes('data-created-at')!,
+                );
+                const nextTimestamp = parseInt(
+                  updatedMessageItems[i + 1]!.attributes('data-created-at')!,
+                );
+
+                // Current message should be newer than or equal to the next message
+                expect(currentTimestamp).toBeGreaterThanOrEqual(nextTimestamp);
+              }
+            }
+
+            wrapper.unmount();
+          },
+        ),
+        { numRuns: 30 },
+      );
+    }, 30000);
   });
 
   describe('Unit Tests', () => {
